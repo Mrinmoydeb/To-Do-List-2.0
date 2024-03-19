@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.container {
+  padding: 2rem 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background: peachpuff;
+}
+.inputbox {
+  display: grid;
+  grid-template-columns: repeat(2, 80% 18%);
+  gap: 2%;
+}
+.inputbox input {
+  padding: 0.8rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+.inputbox button {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background: rgb(77, 235, 77);
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
+.list {
+  padding: 2rem 0rem;
+}
+.list li {
+  display: flex;
+  margin: 1rem 0rem;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  background: palegoldenrod;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.list li span:nth-child(2) {
+  background-color: red;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
