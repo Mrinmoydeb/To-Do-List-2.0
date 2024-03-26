@@ -12,7 +12,7 @@ addBtn.addEventListener('click', ()=>{
 function setVal(){
     list.forEach((val)=>{
         let li = document.createElement('li')
-        li.innerHTML =`<li><span>${val}</span> <span>X</span></li>`
+        li.textContent =val
         listItem.appendChild(li)
     })
 }
