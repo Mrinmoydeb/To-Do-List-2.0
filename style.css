@@ -57,3 +57,8 @@ body{
   border-radius: 5px;
   cursor: pointer;
 }
+.err{
+  color: red;
+  font-family: sans-serif;
+  margin-top: 10px;
+}
