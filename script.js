@@ -52,7 +52,7 @@ add_button.onclick = () => {
     }
 
     function completeTask(e) {
-        // gug need to be fix on done button
+     
         let t = e.target;
         t.onclick = () => {
             if (doneButton.checked) {
