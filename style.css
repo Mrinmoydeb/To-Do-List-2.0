@@ -50,6 +50,10 @@ body{
   display: flex;
   align-items: center;
 }
+.list li span:nth-child(1){
+  display: flex;
+  gap: .5rem;
+}
 .list li span:nth-child(2) {
   background-color: red;
   color: #fff;
@@ -61,4 +65,7 @@ body{
   color: red;
   font-family: sans-serif;
   margin-top: 10px;
+}
+.done{
+  text-decoration: line-through;
 }
