@@ -27,24 +27,8 @@ add_button.onclick = () => {
     var doneButton = document.createElement("input");
     var showval = document.createElement("p");
     if (taskText !== "") {
-        let li = document.createElement("li");
-        task_list.appendChild(li);
-        let span_two = document.createElement("span");
-        let span_one = document.createElement("span");
-
-        span_one.onclick = completeTask;
-        showval.textContent = taskText;
-      
-        doneButton.type = "checkbox";
-        span_one.appendChild(doneButton);
-        span_one.appendChild(showval);
-        span_two.innerText = "Delete";
-        span_two.onclick = onDelete;
-        li.appendChild(span_one);
-        li.appendChild(span_two);
-        err.style.display = "none";
-        entry.style.border = "none";
-        entry.value = "";
+        loadTask()
+        storeTask();
     } else {
         err.style.display = "block";
         entry.style.border = "1px solid red";
@@ -70,3 +54,36 @@ function onDelete(e) {
     task.parentElement.remove();
 }
  
+function storeTask(){
+    let taskErry = [];
+    let taskList = task_list.getElementsByTagName('li');
+    for (let i = 0; i < taskList.length; i++) {
+      taskErry.push(taskList[i]) 
+    }
+    localStorage.setItem('tasks', JSON.stringify(taskErry))
+}
+
+function loadTask(){
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+    if(tasks){
+        tasks.forEach(taskText => {
+            let li = document.createElement("li");
+            task_list.appendChild(li);
+            let span_two = document.createElement("span");
+            let span_one = document.createElement("span");
+            span_one.onclick = completeTask;
+            showval.textContent = taskText;
+          
+            doneButton.type = "checkbox";
+            span_one.appendChild(doneButton);
+            span_one.appendChild(showval);
+            span_two.innerText = "Delete";
+            span_two.onclick = onDelete;
+            li.appendChild(span_one);
+            li.appendChild(span_two);
+            err.style.display = "none";
+            entry.style.border = "none";
+            entry.value = "";
+        });
+    }
+}
