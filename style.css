@@ -54,13 +54,7 @@ body{
   display: flex;
   gap: .5rem;
 }
-.list li span:nth-child(2) {
-  background-color: red;
-  color: #fff;
-  padding: 0.5rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
+
 .err{
   color: red;
   font-family: sans-serif;
