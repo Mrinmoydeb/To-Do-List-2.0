@@ -17,11 +17,27 @@ add_button.onclick = () => {
     task_list.insertAdjacentHTML("beforeend", task);
     let dltButtos = document.querySelectorAll(".dltBtn");
     dltButtos.forEach((dButtons) => {
-      dButtons.onclick = () => {
+      dButtons.onclick = (e) => {
         dButtons.parentNode.remove();
+        console.log(e);
         taskCount = -1;
         displayCount(taskCount);
       };
+    });
+
+    let editButton = document.querySelectorAll(".editBtn");
+    editButton.forEach((editbutton) => {
+      editbutton.onclick = (e) => {
+        let targetElements = e.target;
+        if(!(e.target.className == 'edit')){
+      targetElements = e.targetElements.parentElement;
+        }
+        entry.value = targetElements.previousElementSibling?.innerText;
+        targetElements.parentElement.remove();
+        taskCount -= 1;
+        displayCount(taskCount)
+      };
+
     });
 
     entry.value = "";
