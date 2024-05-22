@@ -16,14 +16,26 @@ add_button.onclick = () => {
        </li>`;
     task_list.insertAdjacentHTML("beforeend", task);
     let dltButtos = document.querySelectorAll(".dltBtn");
-    dltButtos.forEach((dButtons) => {
-      dButtons.onclick = (e) => {
-        dButtons.parentElement.remove();
-        console.log(e);
-        taskCount -= 1;
-        displayCount(taskCount);
-      };
-    });
+
+    function checkDelete( chck){
+      dltButtos.forEach((dButtons) => {
+        console.log(chck.checked);
+
+        dButtons.onclick = (e) => {
+          if(!chck.checked){
+            dButtons.parentElement.remove();
+            taskCount -= 1;
+            displayCount(taskCount);
+          }else{
+            dButtons.parentElement.remove();
+            
+          }
+
+        };
+  
+      });
+    }
+
 
     let editButton = document.querySelectorAll(".editBtn");
     editButton.forEach((editbutton) => {
@@ -41,7 +53,7 @@ add_button.onclick = () => {
 
     let check_list = document.querySelectorAll('.check-box');
     check_list.forEach((chck) => {
-      console.log(chck);
+      checkDelete(chck);
       chck.onchange = () => {
         chck.nextElementSibling.classList.toggle('done');
         if (chck.checked) {
