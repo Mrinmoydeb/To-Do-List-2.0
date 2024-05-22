@@ -18,9 +18,9 @@ add_button.onclick = () => {
     let dltButtos = document.querySelectorAll(".dltBtn");
     dltButtos.forEach((dButtons) => {
       dButtons.onclick = (e) => {
-        dButtons.parentNode.remove();
+        dButtons.parentElement.remove();
         console.log(e);
-        taskCount = -1;
+        taskCount -= 1;
         displayCount(taskCount);
       };
     });
@@ -29,17 +29,31 @@ add_button.onclick = () => {
     editButton.forEach((editbutton) => {
       editbutton.onclick = (e) => {
         let targetElements = e.target;
-        if(!(e.target.className == 'edit')){
-      targetElements = e.targetElements.parentElement;
+        if (!(e.target.className == 'edit')) {
+          targetElements = targetElements.parentElement;
         }
         entry.value = targetElements.previousElementSibling?.innerText;
         targetElements.parentElement.remove();
         taskCount -= 1;
         displayCount(taskCount)
       };
-
     });
 
+    let check_list = document.querySelectorAll('.check-box');
+    check_list.forEach((chck) => {
+      console.log(chck);
+      chck.onchange = () => {
+        chck.nextElementSibling.classList.toggle('done');
+        if (chck.checked) {
+          taskCount -= 1
+        } else {
+          taskCount += 1
+        }
+        displayCount(taskCount);
+      }
+    });
+    taskCount += 1
+    displayCount(taskCount);
     entry.value = "";
     // validation
     err.style.display = "none";
@@ -55,3 +69,4 @@ add_button.onclick = () => {
 function displayCount(taskCount) {
   countValue.innerText = taskCount;
 }
+
