@@ -82,3 +82,5 @@ function displayCount(taskCount) {
   countValue.innerText = taskCount;
 }
 
+
+//configure the bug on edit button,
