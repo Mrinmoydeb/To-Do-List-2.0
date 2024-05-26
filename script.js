@@ -1,11 +1,13 @@
 const entry = document.querySelector(".inputbox input");
 const add_button = document.querySelector(".inputbox button");
+const add_button_innerTxt = add_button.innerText;
 const task_list = document.querySelector(".list");
 const countValue = document.querySelector(".pending-task");
 const err = document.querySelector(".err");
 let taskCount = 0;
 
 add_button.onclick = () => {
+  add_button.innerText = add_button_innerTxt;
   let taskText = entry.value.trim();
   if (taskText !== "") {
     const task = `<li class="li-list">
@@ -17,39 +19,35 @@ add_button.onclick = () => {
     task_list.insertAdjacentHTML("beforeend", task);
     let dltButtos = document.querySelectorAll(".dltBtn");
 
-    function checkDelete( chck){
+    function checkDelete(chck) {
       dltButtos.forEach((dButtons) => {
-        console.log(chck.checked);
-
-        dButtons.onclick = (e) => {
-          if(!chck.checked){
+        dButtons.onclick = () => {
+          if (!chck.checked) {
             dButtons.parentElement.remove();
             taskCount -= 1;
             displayCount(taskCount);
-          }else{
+          } else {
             dButtons.parentElement.remove();
-            
           }
-
         };
-  
+
       });
     }
 
 
-    let editButton = document.querySelectorAll(".editBtn");
-    editButton.forEach((editbutton) => {
-      editbutton.onclick = (e) => {
-        let targetElements = e.target;
-        if (!(e.target.className == 'edit')) {
-          targetElements = targetElements.parentElement;
-        }
-        entry.value = targetElements.previousElementSibling?.innerText;
-        targetElements.parentElement.remove();
-        taskCount -= 1;
-        displayCount(taskCount)
-      };
-    });
+      let editButton = document.querySelectorAll(".editBtn");
+      editButton.forEach((editbutton, index) => {
+
+        editbutton.onclick = (e) => {
+          let targerEl = e.target.previousElementSibling.innerText;
+          console.log(index);
+           entry.value = targerEl;
+           add_button.innerText = 'Save';
+        };
+      });
+    
+
+ 
 
     let check_list = document.querySelectorAll('.check-box');
     check_list.forEach((chck) => {
